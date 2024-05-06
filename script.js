@@ -1,58 +1,44 @@
-// Define Choices
+document.addEventListener('DOMContentLoaded', () => {
+    const choices = ["rock", "paper", "scissors"];
 
-const choices = ["rock", "paper", "scissors"];
-
-// Define outcomes
-
-function computerPlay() {
-
-// Randomly generate computer choice
-
-return choices[Math.floor(Math.random() * choices.length)];
-}
-
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
-
-    if (!choices.includes(playerSelection)) {
-        return "Invalid choice. Please choose rock, paper, or scissors."
+    function computerPlay() {
+        return choices[Math.floor(Math.random() * choices.length)];
     }
-}
 
-if (playerSelection === computerSelection) {
-    return "It's a tie!"
-}
+    function playRound(playerSelection, computerSelection) {
+        playerSelection = playerSelection.toLowerCase();
+        computerSelection = computerSelection.toLowerCase();
 
-else if (
-    (playerSelection === "rock" && computerSelection === "scissors") ||
-    (playerSelection === "paper" && computerSelection === "rock") ||
-    (playerSelection === "scissors" && computerSelection === "paper")
-)
+        if (!choices.includes(playerSelection)) {
+            return "Invalid choice. Please choose rock, paper, or scissors.";
+        }
 
-{
-    return 'You win! ${playerSelection} beats ${computerSelection}. ';
-    
-}
+        if (playerSelection === computerSelection) {
+            return "It's a tie!";
+        } else if (
+            (playerSelection === "rock" && computerSelection === "scissors") ||
+            (playerSelection === "paper" && computerSelection === "rock") ||
+            (playerSelection === "scissors" && computerSelection === "paper")
+        ) {
+            return `You win! ${playerSelection} beats ${computerSelection}.`;
+        } else {
+            return `You lose! ${computerSelection} beats ${playerSelection}.`;
+        }
+    }
 
-else { return 'You lose! ${computerSelection} beats ${playerSelection}.'}
+    function game(playerChoice) {
+        const computerChoice = computerPlay();
+        const result = playRound(playerChoice, computerChoice);
 
-function game(playerChoice) {
-    const computerChoice = computerPlay();
-    const result = playRound(playerChoice, computerChoice);
-}
+        // Display Result
+        const resultDisplay = document.querySelector('.result');
+        resultDisplay.textContent = result;
+    }
 
-// Display Result and Tally
-
-const resultDisplay = document.querySelector('.result');
-resultDisplay.textContent = result;
-
-
-// Event listeners for buttons
-
-const buttons = document.querySelectorAll('.options button');
-buttons.forEach(button => {
-    button.addEventListener('click', () => {
-        game(button.id); 
+    const buttons = document.querySelectorAll('.options button');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            game(button.id);
+        });
     });
 });
