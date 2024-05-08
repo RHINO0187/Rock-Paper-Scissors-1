@@ -1,1 +1,60 @@
-h1 {font-style: strong;}
+/* Overall body styling to center everything */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
+
+/* Styling specific to the .game container */
+.game {
+    border: 20px solid #024d9c;
+    padding: 100px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    text-align: center;
+}
+
+/* Heading styling */
+.game h1 {
+    color: #333;
+    font-size: 24px;
+}
+
+/* Button styling */
+.options button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px 10px 20px; 
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #024d9c;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.options button:hover {
+    background-color: #0056b3;
+}
+
+/* Result display styling */
+.result p {
+    color: #000000;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.scoreboard {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.scoreboard p {
+    margin: 5px 0;
+}

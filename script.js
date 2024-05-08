@@ -1,8 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const choices = ["rock", "paper", "scissors"];
+    let wins = 0;
+    let losses = 0;
+    let ties = 0;
 
     function computerPlay() {
         return choices[Math.floor(Math.random() * choices.length)];
+    }
+
+    function updateScoreboard() {
+        document.getElementById('wins').textContent = wins;
+        document.getElementById('losses').textContent = losses;
+        document.getElementById('ties').textContent = ties;
     }
 
     function playRound(playerSelection, computerSelection) {
@@ -14,14 +23,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (playerSelection === computerSelection) {
+            ties++;
+            updateScoreboard();
             return "It's a tie!";
         } else if (
             (playerSelection === "rock" && computerSelection === "scissors") ||
             (playerSelection === "paper" && computerSelection === "rock") ||
             (playerSelection === "scissors" && computerSelection === "paper")
         ) {
+            wins++;
+            updateScoreboard();
             return `You win! ${playerSelection} beats ${computerSelection}.`;
         } else {
+            losses++;
+            updateScoreboard();
             return `You lose! ${computerSelection} beats ${playerSelection}.`;
         }
     }
