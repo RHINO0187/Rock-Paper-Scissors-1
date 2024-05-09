@@ -11,7 +11,11 @@ body {
 
 /* Styling specific to the .game container */
 .game {
-    border: 20px solid #024d9c;
+    min-width: 500px;
+    max-width: 800px;
+    min-height: 350px;
+    max-height: 550px;
+    border: 25px solid #024d9c;
     padding: 100px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
